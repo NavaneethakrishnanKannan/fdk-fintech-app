@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
-import Order from '../../../../../Order/index.js';
+// import React, { Fragment } from 'react';
+// import Order from '../../../../../Order/index.js';
 
-export default function TicketList() {
+// export default function TicketList() {
 
-    return (
+//     return (
 
-        <Fragment>
-            <Order />
-        </Fragment>
+//         <Fragment>
+//             <Order />
+//         </Fragment>
 
-    )
+//     )
 
-}
+// }

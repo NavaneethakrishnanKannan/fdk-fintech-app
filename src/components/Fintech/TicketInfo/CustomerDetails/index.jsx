@@ -21,7 +21,7 @@ export default function CustomerDetails() {
         <div className='profile-container'>
             <div className='contact-info-container'>
                 <div className='profile-image'>
-                    <img src={user}/>
+                    <img src={user} />
                     {/* <svg xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 448 512">
                         <path
@@ -30,10 +30,22 @@ export default function CustomerDetails() {
                 </div>
             </div>
             <div className='profile-info-container'>
-                <div className='profile-name'>{`${userData.name.firstname} ${userData.name.lastname}`}</div>
+                <div className='profile-personal-info'>
+                    <div className='profile-name'>{`${userData.name.firstname} ${userData.name.lastname}`}</div>
+                    {/* <div className='profile-company-info'> */}
+                    <div className='profile-role'>{`${userData.role}`}</div>
+                    <a className='profile-company' href='#'>{`${userData.company}`}</a>
+                    {/* </div> */}
+                </div>
                 <div className='profile-company-info'>
-                <div className='profile-role'>{`${userData.role}`}</div>
-                <a className='profile-company' href='#'>{`${userData.company}`}</a>
+                    <div className='profile-contact-section'>
+                        <span className='span-label-color'>Primary email</span>
+                        <span className='label-lower'>{userData.email}</span>
+                    </div>
+                    <div className='profile-contact-section'>
+                        <span className='span-label-color'>Phone</span>
+                        <span>{userData.phone}</span>
+                    </div>
                 </div>
             </div>
         </div>

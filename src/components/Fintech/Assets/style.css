@@ -19,6 +19,10 @@ textarea {
     outline: none;
 }
 
+.label-lower{
+    text-transform: lowercase;
+}
+
 
 .header-section {
     height: 55px;
@@ -36,8 +40,17 @@ textarea {
     color: white;
 }
 
-.header-container {
+header {
     width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.header-container {
+    width: calc(100% - 9px);
     height: 55px;
     border-bottom: 1px solid #D3D5DC;
     background: #F5F7F9;
@@ -101,14 +114,14 @@ textarea {
 }
 
 .ticket-info-contaier {
-    width: 80%;
+    width: 75%;
     height: 100%;
 }
 
 .transaction-info-container {
-    width: 20%;
+    width: 25%;
     height: 100%;
-    outline: 1px solid #f3f3f3;
+    outline: 10px solid #f3f3f3;
 }
 
 .left-container {
@@ -121,14 +134,43 @@ textarea {
 .customer-info-section {
     display: inline-flex;
     width: 100%;
-    height: 25%;
+    height: 28%;
+    overflow: auto;
+}
+
+.customer-info-section::-webkit-scrollbar {
+    background-color: #fff;
+    width: 0px;
+}
+
+.customer-info-section:hover {
+    &::-webkit-scrollbar {
+        width: 14px;
+    }
+}
+
+/* background of the scrollbar except button or resizer */
+.customer-info-section::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+/* scrollbar itself */
+.customer-info-section::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 4px solid #fff;
+}
+
+/* set button(top and bottom of the scrollbar) */
+.customer-info-section::-webkit-scrollbar-button {
+    display: none;
 }
 
 .ticket-info-section {
     display: inline-flex;
     flex-direction: column;
     width: 100%;
-    height: 75%;
+    height: 72%;
 }
 
 .ticket-info>span {
@@ -250,6 +292,7 @@ textarea {
 .timeline-section::-webkit-scrollbar {
     background-color: #fff;
     width: 0px;
+    display: none;
 }
 
 .timeline-section:hover {
@@ -294,12 +337,14 @@ textarea {
 
 .ticket-table-wrapper {
     height: calc(100% - 80px);
+    width: calc(100% - 20px);
     overflow-y: scroll;
 }
 
 .ticket-table-wrapper::-webkit-scrollbar {
     background-color: #fff;
     width: 0px;
+    display: none;
 }
 
 .ticket-table-wrapper:hover {
@@ -335,7 +380,7 @@ textarea {
 }
 
 .contact-info-container {
-    width: 18%;
+    width: 120px;
     height: 100%;
     display: flex;
 }
@@ -343,28 +388,37 @@ textarea {
 .profile-container {
     display: flex;
     width: 100%;
-    align-items: center;
+    /* align-items: center; */
+    margin: 24px 15px;
+    gap: 24px;
 }
 
 .profile-image {
     height: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     margin-left: 20px;
 }
 .profile-image > img {
-    height: calc(100% - 50px);
+    width: 88px;
+    height: 88px;
 }
 
 .profile-info-container {
-    width: 82%;
-    height: calc(100% - 50px);
+    width: calc(100% - 120px);
+    /* height: calc(100% - 50px); */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+    /* justify-content: center; */
+    gap: 15px;
     text-transform: capitalize;
+}
+
+.profile-personal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .profile-name {
@@ -374,17 +428,219 @@ textarea {
 
 .profile-company-info {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    /* flex-direction: column; */
+    gap: 22px;
 }
 
 .profile-role {
     font-weight: bold;
     font-size: 14px;
+    color: #777777;
 }
 
 .profile-company {
     color: blue;
     cursor: pointer;
     text-decoration: unset;
+}
+
+.profile-contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.span-label-color {
+    color: #777777;
+}
+
+.accordion {
+    position: relative;
+    /* border-radius: 8px; */
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - 20px);
+    /* max-height: var(--height); */
+    height: 51px;
+    /* box-shadow: 0 1px 3px 0px #000000; */
+    /* margin: 10px;
+    margin-bottom: 0; */
+    /* border-bottom-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius); */
+    transition: var(--trans) 2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F6F7F9;
+}
+
+/* .accordion:hover {
+    background-color: #e0e0e0;
+} */
+
+.accordion-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    /* background-color: #F6F7F9; */
+    padding: 16px;
+    font-size: 18px;
+    cursor: pointer;
+    /* transition: background-color 0.3s ease; */
+}
+
+.accordion-content {
+    position: relative;
+    /* margin: 10px; */
+    display: block;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 1.6;
+    width: 100%;
+    /* max-height: var(--maxHeight); */
+    /* height: calc(100% - 75px); */
+    height: calc(100% - 75px);
+    /* border-radius: 8px; */
+    overflow-y: scroll;
+    /* box-shadow: 0 1px 3px 0px #000000; */
+    /* margin-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0; */
+    /* transition: all 1.5s ease-in-out;
+    will-change: transform; */
+}
+
+.accordian-arrow {
+    justify-content: flex-end;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.transaction-container{
+    height: 60px;
+    outline: 1px solid #E5E5E5;
+    display: flex;
+    padding: 10px;
+}
+
+.transaction-info-body{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.trans-icon-container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.trans-action-container {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.trans-amount-container {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3px;
+}
+
+.trans-action-label {
+    font: 14px inter;
+}
+
+.trans-status-label {
+    font: 12px inter;
+    color: var(--color);
+}
+
+.trans-date-label {
+    font: 14px inter;
+    color: #777777;
+}
+
+.trans-amount-label {
+    display: flex;
+    align-items: center;
+    font: 16px inter;
+    font-weight: bold;
+    color: #000000;
+}
+
+.accordion-content::-webkit-scrollbar {
+    background-color: #fff;
+    width: 0px;
+    display: none;
+}
+
+.accordion-content:hover {
+    &::-webkit-scrollbar {
+        width: 14px;
+    }
+}
+
+/* background of the scrollbar except button or resizer */
+.accordion-content::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+/* scrollbar itself */
+.accordion-content::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 4px solid #fff;
+}
+
+/* set button(top and bottom of the scrollbar) */
+.accordion-content::-webkit-scrollbar-button {
+    display: none;
+}
+
+.accordian-icon-container {
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.accordian-header-container {
+    width: 80%;
+    font: 16px inter;
+}
+
+.accordian-header-container > span {
+    font: 16px inter;
+    font-weight: bold;
+}
+
+.accordian-icon-container {
+    width: 10%;
+}
+
+.trans-icon {
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    background: #EEE;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }

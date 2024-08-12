@@ -1,6 +1,5 @@
 import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
 import './App.css';
-import Order from './components/Order';
 import Fintech from './components/Fintech/index.jsx';
 
 const App = () => {

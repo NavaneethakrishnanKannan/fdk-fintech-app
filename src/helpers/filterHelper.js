@@ -1,4 +1,7 @@
 import { formatDate } from "./dataTableHelper";
+import SuccessIcon  from "../components/Fintech/Assets/images/success.svg";
+import FailedIcon  from "../components/Fintech/Assets/images/failed.svg";
+import PendingIcon  from "../components/Fintech/Assets/images/pending.svg";
 
 export const filterData = [
     {
@@ -51,7 +54,7 @@ export const getSearchType = (type) => {
 }
 
 const DAY = {
-    0: "TODAY",
+    0: "SUN",
     1: "MON",
     2: "TUE",
     3: "WED",
@@ -70,7 +73,8 @@ export const constructTimelineData = (ticketData = [], timelineData = []) => {
                 const { subject, status, priority, createdDate, resolvedDate } = ticketData[ticketIndex];
                 let day = new Date(createdDate).getDay();
                 let timelineDate = `${DAY[new Date(createdDate).getDay()]}, ${formatDate(new Date(createdDate))}`;
-                if(day === 0) {
+                let currentDay = new Date().getDay();
+                if(day === currentDay) {
                     timelineDate = `Today`;
                 }
                 resultData.push({ 
@@ -92,4 +96,10 @@ export const constructTimelineData = (ticketData = [], timelineData = []) => {
     } catch (error) {
         console.log(error);
     }
+}
+
+export const TRANSACTION_STATUS_DATA = {
+    "pending": {color: "#FB6C25", icon: PendingIcon},
+    "completed": {color: "#009835", icon: SuccessIcon},
+    "failed": {color: "#F52A2A", icon: FailedIcon},
 }

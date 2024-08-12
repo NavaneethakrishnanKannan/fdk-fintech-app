@@ -56,11 +56,14 @@ export const constructTableData = (data, cb) => {
     }
 }
 
-export const formatDate = (date) => {
+export const formatDate = (date, isShort = false) => {
     try {
         let day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
         let month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
         let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+        if(isShort) {
+            year = year.substring(year.length -2, year.length);
+        }
         return `${day} ${month} ${year}`;
     } catch (error) {
         console.log(error);
