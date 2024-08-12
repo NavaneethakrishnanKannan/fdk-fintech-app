@@ -38,7 +38,7 @@ const Filter = ({ handleOnLoadOrders, handleUpdateResetFilter, resetFilter = fal
                     <span
                         className='row fw-flex fw-type-xs fw-p-4 fw-type-semibold filter-header'
                     >
-                        Sort Products By
+                        Filter Tickets By
                     </span>
                     <hr style={{ margin: '0px' }} />
                     <FwListOptions
