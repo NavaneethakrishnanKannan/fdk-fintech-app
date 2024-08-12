@@ -2,7 +2,7 @@
 Freshdesk Full Page React Application 
 
 ## About The App
-The Order Tracking and Returns Management App is designed to empower support staff by providing them with a comprehensive tool to efficiently track customer orders and initiate returns.
+Enhanced Fintech Support Management App is designed to empower support staff by providing them with a comprehensive tool to efficiently resolve customer queries and issues.
 
 ## Technologies
 `React`
